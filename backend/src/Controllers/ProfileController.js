@@ -17,10 +17,10 @@ module.exports = {
       .select('*')
       .first()
 
-//=>>error //if (ong.id != id) {
+//=>>error redundante //if (ong.id != id) {
     //  return res.status(401).json({error: 'operation not permited'});
     //}
-    
+
     await connect('incidents').where('ong_id', id).delete();
     await connect('ongs').where('id', id).delete();
     return res.send('ong deleted');
