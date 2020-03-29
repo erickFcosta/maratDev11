@@ -5,7 +5,10 @@ module.exports = {
 
 //=>>ListOng's
   async index(req, res){
-    const ongs = await connect('ongs').select('*');
+    //=>> exemplo =>> const ong = req.headers.authorization;
+    const ongs = await connect('ongs')
+      //=>> exemplo =>> .where('id', ong)
+      .select('*');
     return res.json(ongs);
   },
 //=>>CreateOng

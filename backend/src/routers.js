@@ -12,6 +12,9 @@ router.get('/profile', ProControl.index);
 router.post('/sessions', SesControl.create); //login
 router.post('/ongs', OngController.create);
 router.post('/incidents', IncControl.create);
+//=>>deleteRouter
+router.delete('/incidents/:id', IncControl.delete);
+router.delete('/profile', ProControl.delete);
 
 module.exports = router;
 
