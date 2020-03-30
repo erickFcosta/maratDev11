@@ -20,9 +20,11 @@ module.exports = {
 //=>>error redundante //if (ong.id != id) {
     //  return res.status(401).json({error: 'operation not permited'});
     //}
-
+    if (!ong) {
+      return res.status(400).json({ error: "no ONG found with this ID" })
+    }
     await connect('incidents').where('ong_id', id).delete();
     await connect('ongs').where('id', id).delete();
-    return res.send('ong deleted');
+    return res.send(ong.name+' deleted');
   }
 };

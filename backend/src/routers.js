@@ -15,6 +15,8 @@ router.post('/incidents', IncControl.create);
 //=>>deleteRouter
 router.delete('/incidents/:id', IncControl.delete);
 router.delete('/profile', ProControl.delete);
+//=>>updateRouter
+router.put('/incidents/:id', IncControl.update);
 
 module.exports = router;
 

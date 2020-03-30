@@ -6,9 +6,13 @@ module.exports = {
 //=>>ListOng's
   async index(req, res){
     //=>> exemplo =>> const ong = req.headers.authorization;
+    const {page = 1} = req.query;
+    const [count] = await connect('ongs').count();
     const ongs = await connect('ongs')
       //=>> exemplo =>> .where('id', ong)
-      .select('*');
+      .limit(5)
+      .offset((page - 1) * 5).select('*');
+    res.header('X-Total-Count', count['count(*)']);
     return res.json(ongs);
   },
 //=>>CreateOng
