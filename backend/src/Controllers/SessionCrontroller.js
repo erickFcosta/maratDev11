@@ -5,7 +5,7 @@ module.exports = {
     const {id} = req.body;
     const ong = await connect('ongs')
       .where('id', id)
-      .select('name')
+      .select('name', 'email')
       .first(); //=>para não retornar um array (onlyResult)
     if (!ong) {
       return res.status(400).json({ error: "no ONG found with this ID" })
